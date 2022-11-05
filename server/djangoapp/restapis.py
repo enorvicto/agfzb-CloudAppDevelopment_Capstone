@@ -64,8 +64,7 @@ def get_dealers_from_cf(url, **kwargs):
             if "doc" in dealer:
                 dealer_doc = dealer["doc"]
             else:
-                dealer_doc = dealer
-            asd = dealer_doc          
+                dealer_doc = dealer  
             # Create a CarDealer object with values in `doc` object
             dealer_obj = CarDealer(address=dealer_doc["address"], city=dealer_doc["city"], full_name=dealer_doc["full_name"],
                                    id=dealer_doc["id"], lat=dealer_doc["lat"], long=dealer_doc["long"],
@@ -94,7 +93,7 @@ def get_dealer_reviews_from_cf(url, **kwargs):
             review_obj = DealerReview(dealership=review["dealership"], name=review["name"], purchase=review["purchase"], 
                                    review=review["review"], purchase_date=review["purchase_date"], car_make=review["car_make"],
                                    car_model=review["car_model"],
-                                   car_year=review["car_year"], sentiment=analyze_review_sentiments(review["review"]), id=review["id"])
+                                   car_year=review["car_year"], sentiment=analyze_review_sentiments(review["review"]))
             results.append(review_obj)
 
     return results
